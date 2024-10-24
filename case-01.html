@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Queue Animation</title>
+    <style>
+        section {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        section > div > img {
+            width: 80px;
+            height: 80px;
+        }
+        section>div>div{
+            color: lightseagreen;
+            font-size: 20px;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center; color: red">JS Que</h1>
+<section>
+    <div>
+        <img src="assets/gif/manwalk.gif">
+        <div>A</div>
+    </div>
+    <div>
+        <img src="assets/gif/manwalk.gif">
+        <div>B</div>
+    </div>
+    <div>
+        <img src="assets/gif/manwalk.gif">
+        <div>C</div>
+    </div>
+    <div>
+        <img src="assets/gif/manwalk.gif">
+        <div>D</div>
+    </div>
+    <div>
+        <img src="assets/gif/manwalk.gif">
+        <div>E</div>
+    </div>
+    <div>
+        <img src="assets/gif/manwalk.gif">
+        <div>F</div>
+    </div>
+</section>
+
+<div class="buttons">
+    <button onclick="startQueue()">Start Queue</button>
+    <button onclick="stopQueue()">Stop Queue</button>
+</div>
+
+<script>
+    let arr = ["A", "B", "C", "D", "E", "F"];
+    let intervalId;
+
+    function updateQueue() {
+        let last_value = arr.pop();
+        arr.unshift(last_value);
+
+        document.querySelectorAll('section div div').forEach((div, index) => {
+            div.textContent = arr[index];
+        });
+    }
+
+    function startQueue() {
+        if (!intervalId) {
+            intervalId = setInterval(updateQueue, 2000);
+        }
+    }
+    function stopQueue() {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+</script>
+
+</body>
+</html>
