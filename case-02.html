@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Boxes Layout</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2f3e47;
+        }
+
+        section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            width: 400px;
+            height: 200px;
+            border: 2px solid #ccc;
+            padding: 5px;
+        }
+
+        .box {
+            width: 75px;
+            height: 50px;
+        }
+
+        .line {
+            height: 6px;
+            width: 400px;
+            background-color: #ccc;
+            margin: 0 5px;
+        }
+
+        .midcontainer {
+            display: flex;
+            gap: 5px;
+        }
+
+        .box-top {
+            position: relative;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .box-bottom {
+            position: relative;
+            margin-left: auto;
+            margin-right: 0;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+<section>
+    <div class="box t1 box-top "></div>
+    <div class="line"></div>
+    <div class="midcontainer">
+        <div class="box t2 "></div>
+        <div class="box t3 "></div>
+        <div class="box t4 "></div>
+        <div class="box t5 "></div>
+    </div>
+    <div class="line"></div>
+    <div class="box t6 box-bottom "></div>
+</section>
+
+<script>
+    $(document).ready(function() {
+        let colors = ["red", "blue", "green", "orange", "purple", "pink"];
+
+        setInterval(function() {
+            // Rotate colors array
+            let tempColor = colors.pop();
+            colors.unshift(tempColor);
+
+            // Set colors of each box
+            $(".t1").css("background-color", colors[0]);
+            $(".t2").css("background-color", colors[1]);
+            $(".t3").css("background-color", colors[2]);
+            $(".t4").css("background-color", colors[3]);
+            $(".t5").css("background-color", colors[4]);
+            $(".t6").css("background-color", colors[5]);
+        }, 1000);
+    });
+</script>
+
+</body>
+
+</html>
